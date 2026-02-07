@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaglutide Pills Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .alert-banner {
+            background: #dc2626;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 4px solid #991b1b;
+        }
+        
+        .comparison-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .product-card {
+            padding: 50px 40px;
+            position: relative;
+        }
+        
+        .hims-card {
+            background: linear-gradient(to bottom, #fef3c7 0%, #fde68a 100%);
+            border-right: 3px solid #d97706;
+        }
+        
+        .wegovy-card {
+            background: linear-gradient(to bottom, #dbeafe 0%, #bfdbfe 100%);
+        }
+        
+        .product-header {
+            margin-bottom: 35px;
+        }
+        
+        .product-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .warning-badge {
+            background: #dc2626;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .approved-badge {
+            background: #059669;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .company {
+            font-size: 18px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .price-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 6px solid #2563eb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .price-label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1e40af;
+            line-height: 1;
+        }
+        
+        .price-details {
+            font-size: 15px;
+            color: #4b5563;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .icon {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: #059669;
+            font-weight: bold;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .x-mark {
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .warning-mark {
+            color: #d97706;
+            font-weight: bold;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .regulatory-box {
+            background: #fee2e2;
+            border: 3px solid #dc2626;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .regulatory-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .regulatory-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #7f1d1d;
+        }
+        
+        .key-differences {
+            background: #f9fafb;
+            padding: 50px 40px;
+            border-top: 3px solid #e5e7eb;
+        }
+        
+        .key-differences h2 {
+            font-size: 32px;
+            margin-bottom: 35px;
+            text-align: center;
+            color: #1f2937;
+        }
+        
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .difference-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid #ef4444;
+        }
+        
+        .difference-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #dc2626;
+        }
+        
+        .difference-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+        
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: #fef08a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .bold {
+            font-weight: 700;
+        }
+        
+        @media (max-width: 968px) {
+            .comparison-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .hims-card {
+                border-right: none;
+                border-bottom: 3px solid #d97706;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .price {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Semaglutide Pills Showdown</h1>
+            <p>FDA-Approved vs. Compounded: The Regulatory Gap</p>
+        </div>
+        
+        <div class="alert-banner">
+            ⚠️ KEY ISSUE: Hims & Hers is using a "personalized dosing" loophole to bypass FDA approval requirements — even after the semaglutide shortage officially ended in February 2025
+        </div>
+        
+        <div class="comparison-section">
+            <!-- Hims & Hers Card -->
+            <div class="product-card hims-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        Hims & Hers Pill
+                        <span class="warning-badge">Not FDA Approved</span>
+                    </div>
+                    <div class="company">Hims & Hers Health, Inc.</div>
+                </div>
+                
+                <div class="price-box">
+                    <div class="price-label">Pricing</div>
+                    <div class="price">$49</div>
+                    <div class="price-details">
+                        First month introductory<br>
+                        Then $99/month ongoing
+                    </div>
+                </div>
+                
+                <div class="regulatory-box">
+                    <div class="regulatory-title">
+                        ⚠️ Regulatory Status
+                    </div>
+                    <div class="regulatory-text">
+                        <span class="bold">Compounded drug</span> — NOT approved by FDA. Uses the "compounding exception" claiming "personalized dosing" to continue sales after shortage ended. Novo Nordisk calling this <span class="highlight">"illegal mass compounding"</span> and threatening legal action.
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">⚖️</span>
+                        The Loophole Strategy
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="warning-mark">⚠️</span>
+                            <span>Originally sold during FDA shortage (503A/503B compounding exception allowed during shortages)</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="warning-mark">⚠️</span>
+                            <span>FDA ended semaglutide shortage in <span class="bold">February 2025</span></span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="warning-mark">⚠️</span>
+                            <span>Now claims "personalized dosing" justifies continued compounding — critics say minor dose adjustments don't qualify</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="warning-mark">⚠️</span>
+                            <span>Launched pill version days after Wegovy pill approval to undercut pricing</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">❌</span>
+                        What's Missing
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span><span class="bold">No FDA approval</span> — never went through rigorous clinical trials</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span>Not evaluated for safety, effectiveness, or quality by FDA</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span>Uses different formulation (semaglutide sodium/acetate) than FDA-approved version</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span>No guarantee of consistent dosing or purity</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span>Super Bowl ad didn't list side effects or FDA warnings (violating FDCA)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">⚕️</span>
+                        Clinical Data
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span>No published clinical trial data</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="x-mark">✗</span>
+                            <span>No FDA review of safety or efficacy</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="warning-mark">⚠️</span>
+                            <span>Reports of adverse events and inconsistent dosages</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Wegovy Card -->
+            <div class="product-card wegovy-card">
+                <div class="product-header">
+                    <div class="product-name">
+                        Wegovy Pill
+                        <span class="approved-badge">✓ FDA Approved</span>
+                    </div>
+                    <div class="company">Novo Nordisk</div>
+                </div>
+                
+                <div class="price-box">
+                    <div class="price-label">Pricing</div>
+                    <div class="price">$149</div>
+                    <div class="price-details">
+                        1.5mg & 4mg doses/month<br>
+                        $299/month for 9mg & 25mg doses<br>
+                        ~$25 or less with insurance
+                    </div>
+                </div>
+                
+                <div class="regulatory-box" style="background: #dcfce7; border-color: #059669;">
+                    <div class="regulatory-title" style="color: #065f46;">
+                        ✓ Full FDA Approval
+                    </div>
+                    <div class="regulatory-text" style="color: #064e3b;">
+                        <span class="bold">First and only FDA-approved oral GLP-1 for weight loss.</span> Went through complete clinical trial process and rigorous FDA review. Approved December 2025, launched January 2026.
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">✅</span>
+                        FDA Approval Process
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Completed Phase 3 clinical trials (OASIS 4 program)</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>64-week trial with 307 participants</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Full FDA safety and efficacy review</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Quality standards enforced by FDA</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Manufactured in FDA-registered North Carolina facilities</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">📊</span>
+                        Proven Results
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span><span class="bold">16.6% mean weight loss</span> at 64 weeks (vs 2.7% placebo)</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>1 in 3 participants achieved ≥20% weight loss</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Similar efficacy to injectable Wegovy 2.4mg</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Published in New England Journal of Medicine</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Also proven to reduce cardiovascular events (SELECT trial)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="icon">🛡️</span>
+                        Safety & Quality
+                    </div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>FDA-reviewed safety profile</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Consistent, reliable dosing</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Quality manufacturing standards</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            <span>Complete prescribing information available</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-differences">
+            <h2>🚨 The Critical Regulatory Differences</h2>
+            <div class="difference-grid">
+                <div class="difference-card">
+                    <h3>⚖️ Legal Status</h3>
+                    <p><strong>Hims & Hers:</strong> Exploiting a compounding loophole meant for genuine personalization needs. Novo Nordisk threatening legal action for "illegal mass compounding." FDA warned about deceptive advertising.</p>
+                    <p><strong>Wegovy:</strong> Full FDA approval with legal market authorization.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <h3>🔬 Clinical Evidence</h3>
+                    <p><strong>Hims & Hers:</strong> No clinical trials, no peer-reviewed data, no FDA efficacy review.</p>
+                    <p><strong>Wegovy:</strong> Rigorous Phase 3 trials, published results, proven 16.6% weight loss.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <h3>💊 Active Ingredient</h3>
+                    <p><strong>Hims & Hers:</strong> Different salt formulations (semaglutide sodium or acetate) — chemically distinct from FDA-approved version.</p>
+                    <p><strong>Wegovy:</strong> Exact same semaglutide as FDA-approved injectable.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <h3>🏭 Manufacturing</h3>
+                    <p><strong>Hims & Hers:</strong> Compounding facilities — less regulatory oversight than FDA-approved manufacturing.</p>
+                    <p><strong>Wegovy:</strong> FDA-registered pharmaceutical manufacturing in North Carolina with strict quality controls.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <h3>💰 The Price Gap</h3>
+                    <p><strong>Why the difference?</strong> Hims & Hers avoids the massive R&D, clinical trial, and FDA approval costs (estimated at $1+ billion). They're selling a copycat during what FDA says is no longer a shortage.</p>
+                </div>
+                
+                <div class="difference-card">
+                    <h3>⏱️ Timeline Controversy</h3>
+                    <p><strong>The Problem:</strong> Hims & Hers launched their pill version just DAYS after Wegovy pill approval, clearly attempting to undercut the FDA-approved option on price. FDA ended shortage in Feb 2025, but compounders claiming "personalization" to keep selling.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <strong>Bottom Line:</strong> Hims & Hers is bypassing the rigorous FDA approval process by claiming their mass-produced compounded semaglutide qualifies as "personalized medicine."<br>
+            The FDA compounding exception was designed for genuine patient-specific needs (like dye allergies or custom strengths), not as a loophole to avoid clinical trials and sell cheaper copies of patented drugs.<br><br>
+            <strong>Source Data:</strong> FDA announcements, Novo Nordisk press releases, clinical trial publications (NEJM), Fierce Healthcare, Pharmaceutical Times (Feb 2026). Created February 2026.
+        </div>
+    </div>
+</body>
+</html>
